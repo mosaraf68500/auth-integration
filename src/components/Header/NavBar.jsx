@@ -1,8 +1,12 @@
 import "./navbar.css"
 import { Link, NavLink } from "react-router";
 import { FirebaseAuthContex } from "../../Contex/FirebaseAuthContex/FirebaseAuthContex";
+import { use } from "react";
 
 const NavBar = () => {
+
+    const {user}=use(FirebaseAuthContex);
+    console.log(user)
 
     
   const Links = (
@@ -53,7 +57,7 @@ const NavBar = () => {
           {Links} </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+    { user?<a className="btn">logOut</a> : <Link to="/login">Login</Link>}
       </div>
     </div>
   );
