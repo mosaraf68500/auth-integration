@@ -6,7 +6,7 @@ import { FirebaseAuthContex } from "../../Contex/FirebaseAuthContex/FirebaseAuth
 const NavBar = () => {
 
     const userInfo=use(FirebaseAuthContex);
-    console.log(userInfo)
+    // console.log(userInfo)
   const Links = (
     <>
       <li>
