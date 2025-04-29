@@ -1,8 +1,10 @@
 import React, { use } from 'react';
 import { FirebaseAuthContex } from '../Contex/FirebaseAuthContex/FirebaseAuthContex';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 const PrivateRoutes = ({children}) => {
+
+    const location=useLocation();
 
     const {user,loading}=use(FirebaseAuthContex);
     console.log(user)
@@ -12,7 +14,7 @@ const PrivateRoutes = ({children}) => {
     }
 
     if(!user){
-       return <Navigate to="/login"></Navigate>
+       return <Navigate state={location.pathname} to="/login"></Navigate>
     }
     return children;
 };
