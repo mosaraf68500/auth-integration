@@ -1,12 +1,10 @@
-import { use } from "react";
 import "./navbar.css"
 import { Link, NavLink } from "react-router";
 import { FirebaseAuthContex } from "../../Contex/FirebaseAuthContex/FirebaseAuthContex";
 
 const NavBar = () => {
 
-    const userInfo=use(FirebaseAuthContex);
-    // console.log(userInfo)
+    
   const Links = (
     <>
       <li>
