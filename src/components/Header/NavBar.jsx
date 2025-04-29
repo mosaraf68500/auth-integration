@@ -1,14 +1,20 @@
-import "./navbar.css"
+import "./navbar.css";
 import { Link, NavLink } from "react-router";
 import { FirebaseAuthContex } from "../../Contex/FirebaseAuthContex/FirebaseAuthContex";
 import { use } from "react";
 
 const NavBar = () => {
+  const { user, LogOutUSer } = use(FirebaseAuthContex);
+  const handleLogOut = () => {
+    LogOutUSer()
+      .then(() => {
+        console.log("logout successfully");
+      })
+      .catch(() => {
+        console.log("do not logout");
+      });
+  };
 
-    const {user}=use(FirebaseAuthContex);
-    console.log(user)
-
-    
   const Links = (
     <>
       <li>
@@ -53,11 +59,19 @@ const NavBar = () => {
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {Links} </ul>
+        <ul className="menu menu-horizontal px-1">{Links} </ul>
       </div>
-      <div className="navbar-end">
-    { user?<a className="btn">logOut</a> : <Link to="/login">Login</Link>}
+      <div onClick={handleLogOut} className="navbar-end">
+        {user ? (
+          <>
+          {
+            user.email
+          }
+            <a className="btn">logOut</a>
+          </>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </div>
     </div>
   );
