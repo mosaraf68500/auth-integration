@@ -10,6 +10,8 @@ import Register from './components/Register/Register.jsx'
 import AuthProvider from './Contex/AuthProvider/AuthProvider.jsx'
 import Orders from './components/Orders/Orders.jsx'
 import PrivateRoutes from './PrivateRouters/PrivateRoutes.jsx'
+import Profile from './components/Profile/Profile.jsx'
+import DeshBoard from './components/DeshBoard/DeshBoard.jsx'
 
 
 
@@ -31,6 +33,15 @@ const router=createBrowserRouter([
       {
         path:'orders',
         element:<PrivateRoutes><Orders></Orders></PrivateRoutes>
+      },
+      {
+        path:"profile",
+        element:<PrivateRoutes><Profile></Profile></PrivateRoutes>
+      },
+
+      {
+        path:"/deshboard",
+        element:<PrivateRoutes><DeshBoard></DeshBoard></PrivateRoutes>
       }
     ]
   }

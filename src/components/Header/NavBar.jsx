@@ -27,6 +27,10 @@ const NavBar = () => {
         <NavLink to="/register">Register</NavLink>
       </li>
 
+      <li>
+        <NavLink to="/deshboard">DeshBoard</NavLink>
+      </li>
+
       {
         user && <>
         <li>

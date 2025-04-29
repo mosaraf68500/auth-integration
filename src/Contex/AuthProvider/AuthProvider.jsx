@@ -6,20 +6,24 @@ import { auth } from '../../firebase/firebase.config';
 const AuthProvider = ({children }) => {
 
     const [user,setUser]=useState(null);
+    const [loading,setLoading]=useState(true);
 
 
     // create user
     const createUser=(email,password)=>{
+        setLoading(true)
        return createUserWithEmailAndPassword(auth,email,password);
     }
 
     // login user
 
     const LoginUser=(email,password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth,email,password);
     }
 
 const LogOutUSer=()=>{
+    setLoading(true)
     return signOut(auth);
 }
 
@@ -28,6 +32,7 @@ const LogOutUSer=()=>{
         const unSubscribe=onAuthStateChanged(auth,(currentUser)=>{
             console.log('has current user',currentUser)
             setUser(currentUser);
+            setLoading(false)
         })
         return ()=>{
             unSubscribe();
@@ -39,7 +44,8 @@ const LogOutUSer=()=>{
         createUser,
         LoginUser,
         user,
-        LogOutUSer
+        LogOutUSer,
+        loading
     }
     return (
 

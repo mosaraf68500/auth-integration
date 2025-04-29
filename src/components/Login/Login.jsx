@@ -1,10 +1,11 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FirebaseAuthContex } from '../../Contex/FirebaseAuthContex/FirebaseAuthContex';
 
 const Login = () => {
 
     const {LoginUser}=use(FirebaseAuthContex);
+    const navigate=useNavigate()
   
 
     const handleLogin=(e)=>{
@@ -19,6 +20,7 @@ const Login = () => {
         LoginUser(email,password)
         .then(result =>{
             console.log(result)
+            navigate('/')
         })
         .catch(error =>{
             console.log(error)

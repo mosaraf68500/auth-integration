@@ -1,9 +1,10 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FirebaseAuthContex } from "../../Contex/FirebaseAuthContex/FirebaseAuthContex";
 
 const Register = () => {
   const { createUser } = use(FirebaseAuthContex);
+  const navigate=useNavigate();
   // console.log(createUser)
 
   const handleRegister = (e) => {
@@ -19,6 +20,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result);
+        navigate('/')
       })
 
       .catch((error) => {

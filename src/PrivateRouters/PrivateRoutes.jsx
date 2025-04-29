@@ -4,8 +4,12 @@ import { Navigate } from 'react-router';
 
 const PrivateRoutes = ({children}) => {
 
-    const {user}=use(FirebaseAuthContex);
+    const {user,loading}=use(FirebaseAuthContex);
     console.log(user)
+    if(loading){
+        return <span className="loading loading-bars loading-xl"></span>
+
+    }
 
     if(!user){
        return <Navigate to="/login"></Navigate>
